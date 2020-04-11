@@ -1,0 +1,71 @@
+---
+title: "Assignment #9: Part II"
+author: "Learning Group 3:Meka McCammon, Joy Li, Anna Ehrhorn, and Genee’ Glascoe"
+date: "April 11, 2020"
+output: html_notebook
+---
+
+***
+This is a study investigated the following research question: *For women who* 
+*suffered childhood physical abuse, is a difference in the average PTSD scores* 
+*of women who also suffered childhood sexual abuse and those who did not suffer* 
+*childhood sexual abuse, after accounting for the severity of the childhood*
+*physical abuse?*
+
+```{r include=FALSE}
+
+library(tidyverse)
+
+abuse.data <- read_csv("Sexual Abuse Data.csv")
+
+abuse.data
+
+abuse.data$csa <- factor(abuse.data$csa,
+                         levels = c("Abused", "NotAbused"),
+                         labels = c("Abused", "Not Abused"))
+```
+
+
+***
+### Question 1 
+#### Assigned to Meka
+
+***
+### Question 2
+#### Assigned to Genee'
+
+
+***
+### Question 3
+#### Assigned to Anna
+
+
+***
+### Question 4
+#### Assigned to Joy
+
+
+***
+### Question 5
+#### Assigned to Meka
+
+
+***
+### Question 6
+#### Assigned to Genee'
+
+
+***
+### Question 7
+#### Assigned to Anna
+
+
+***
+### Question 8
+#### Assigned to Joy
+
+
+***
+### Question 9
+#### Assigned to Joy
+
