@@ -70,7 +70,6 @@ ggplot(data = abuse.data) +
 
 
 ***
-
 ### Question 4
 
 A five-number summary and standard deviations for Childhood Phyical Abuse Scores
@@ -84,19 +83,26 @@ tapply(abuse.data$cpa, abuse.data$csa, sd)
 ```
 
 
-
 ***
 ### Question 5
-#### Assigned to Meka
 
-This plot shows the difference in PTSD scores for women who were and were not sexually abused while taking into account childhood physical abuse, and tests for interaction.
+This plot shows the difference in PTSD scores for women who were and were not 
+sexually abused while taking into account childhood physical abuse, and tests 
+for interaction.
+
 ```{r}
 ggplot(abuse.data, aes(x = cpa, y = ptsd, color = csa))+
   stat_smooth (method = "lm", se = FALSE)+
   theme(legend.position = "right")+
-  labs(x = "Childhood Sexual Abuse",
-       y = "PTSD Score",
-       title = "PTSD Score as a Function of Physical Abuse by Sexual Abuse")
+  labs(x = "Childhood Sexual Abuse
+       (standardized scale)",
+       y = "PTSD Score
+       (standardized scale)",
+       title = "PTSD Scores for Women",
+       subtitle = "as a function of Physical Abuse by Sexual Abuse",
+       color = "Reported Childhood Sexual Abuse") +
+  theme(legend.position = "bottom") +
+  scale_color_discrete(labels = c('Abused','Not Abused'))
 ```
 
 ***
@@ -115,15 +121,23 @@ ggplot(abuse.data, aes(x = cpa, y = ptsd, color = csa))+
  A scatterplot illustrating the relationship of women who suffered childhood 
  sexual abuse to those who did not suffer childhood sexual abuse (the 
  explanatory variable) to their PTSD Scores (the response variable) after 
- accounting for the covariate.
+ accounting for their Childhood Physical Abuse Score (the covariate).
 
 ```{r}
 library(tidyverse)
 ggplot(abuse.data, aes(x = cpa, y = ptsd, color = csa)) +
   geom_point() +
   stat_smooth(method = "lm", se = FALSE) +
-  labs (title = "PTSD as a Function of CPA by CSA") +
-  scale_color_manual(values = c("Red", "Blue"))
+  labs(x = "Childhood Physical Abuse Scale 
+       (standardized scale)",
+       y = "Post-traumatic Stress Disorder (PTSD) Score 
+       (standardized scale)",
+       title = "The Childhood Physical Abuse Score by PTSD Score for Women ",
+       subtitle = "who did and did not experience Childhood Sexual Abuse",
+       caption = "Higher scores indicate higher severity of Abuse and/or PTSD",
+       color = "Reported Childhood Sexual Abuse") +
+  theme(legend.position = "bottom") +
+  scale_color_discrete(labels = c('Abused','Not Abused'))
 ```
 
 
