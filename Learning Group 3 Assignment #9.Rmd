@@ -58,6 +58,15 @@ ggplot(abuse.data, aes(x = csa, y = ptsd)) +
 ### Question 5
 #### Assigned to Meka
 
+This plot shows the difference in PTSD scores for women who were and were not sexually abused while taking into account childhood physical abuse, and tests for interaction.
+```{r}
+ggplot(abuse.data, aes(x = cpa, y = ptsd, color = csa))+
+  stat_smooth (method = "lm", se = FALSE)+
+  theme(legend.position = "right")+
+  labs(x = "Childhood Sexual Abuse",
+       y = "PTSD Score",
+       title = "PTSD Score as a Function of Physical Abuse by Sexual Abuse")
+```
 
 ***
 ### Question 6
