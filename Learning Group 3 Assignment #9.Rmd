@@ -28,7 +28,16 @@ abuse.data$csa <- factor(abuse.data$csa,
 
 ***
 ### Question 1 
-#### Assigned to Meka
+#### These are boxplots that show differences in average PTSD scores of women who suffered  childhood sexual abuse compared to those who did not suffer from childhood sexual abuse after accounting for the severity of the childhood physical abuse 
+```{r echo=FALSE}
+ggplot(abuse.data, aes(x = csa, y = ptsd)) +
+  geom_boxplot()+
+  stat_summary(fun = "mean", color = "red", size = 1.5, geom = "point")+
+  labs(x = "Childhood Sexual Abuse",
+       y = "PTSD Score",
+       title = "Relationship of PTSD Scores of Sexually Abused and Not Abused Women")
+```
+
 
 ***
 ### Question 2
