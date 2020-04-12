@@ -39,6 +39,21 @@ abuse.data$csa <- factor(abuse.data$csa,
 ### Question 3
 #### Assigned to Anna
 
+Side-by-side boxplots showing the relationship of Childhood Physical Abuse 
+(the covariate)  for women who suffered childhood sexual abuse to those who 
+did not suffer childhood sexual abuse (the explanatory variable).
+
+```{r}
+ggplot(data = abuse.data) + 
+  geom_boxplot(mapping = aes(x = csa, y = cpa)) +
+  labs(x = "Reported Childhood Sexual Abuse", y = "Childhood Physical Abuse Scale 
+       (standardized scale)",
+       title = "The Childhood Physical Abuse scores of Women",
+       subtitle = "who did and did not Experience Childhood Sexual Abuse",
+       caption = "Higher scores indicate more Abuse") +
+  scale_x_discrete(labels = c('Abused','Not Abused'))
+```
+
 
 ***
 ### Question 4
