@@ -41,8 +41,12 @@ abuse.data$csa <- factor(abuse.data$csa,
 
 
 ***
-### Question 4
+### Question 4. Calculate descriptive statistics for the covariate at each level of the categorical variable.
 #### Assigned to Joy
+```{r}
+tapply(abuse.data$cpa, abuse.data$csa, summary)
+```
+
 
 
 ***
@@ -61,11 +65,29 @@ abuse.data$csa <- factor(abuse.data$csa,
 
 
 ***
-### Question 8
+### Question 8. Illustrate the relationship of the explanatory variable to the response variable after accounting for the covariate by constructing a scatterplot with separate regression lines for each level of the explanatory variable.
 #### Assigned to Joy
+
+```{r}
+library(tidyverse)
+ggplot(abuse.data, aes(x = cpa, y = ptsd, color = csa)) +
+  geom_point() +
+  stat_smooth(method = "lm", se = FALSE) +
+  labs (title = "PTSD as a Function of CPA by CSA") +
+  scale_color_manual(values = c("Red", "Blue"))
+```
 
 
 ***
-### Question 9
+### Question 9. Construct the ANCOVA table after modeling the response variable as a function of the explanatory variable and covariate (without interaction).
 #### Assigned to Joy
+
+```{r}
+model <- abuse.data$ptsd ~ abuse.data$cpa + abuse.data$csa
+model.out <- lm(model)
+plot(model.out, 1)
+plot(model.out, 2)
+anova(model.out)
+model.out
+```
 
