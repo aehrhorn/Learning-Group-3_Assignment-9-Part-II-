@@ -29,7 +29,7 @@ abuse.data$csa <- factor(abuse.data$csa,
 ***
 ### Question 1 
 
-Side-by-side boxplots that show differences in average PTSD scores of women 
+Side-by-side boxplots that show differences in PTSD scores of women 
 who suffered childhood sexual abuse compared to those who did not suffer from 
 childhood sexual abuse.
 
@@ -70,8 +70,19 @@ ggplot(data = abuse.data) +
 
 
 ***
+
 ### Question 4
-#### Assigned to Joy
+
+A five-number summary and standard deviations for Childhood Phyical Abuse Scores
+(the covariate) for women who suffered childhood sexual abuse to those who 
+did not suffer childhood sexual abuse (the explanatory variable).
+
+```{r}
+tapply(abuse.data$cpa, abuse.data$csa, summary)
+
+tapply(abuse.data$cpa, abuse.data$csa, sd)
+```
+
 
 
 ***
@@ -91,10 +102,37 @@ ggplot(data = abuse.data) +
 
 ***
 ### Question 8
-#### Assigned to Joy
+
+ A scatterplot illustrating the relationship of women who suffered childhood 
+ sexual abuse to those who did not suffer childhood sexual abuse (the 
+ explanatory variable) to their PTSD Scores (the response variable) after 
+ accounting for the covariate.
+
+```{r}
+library(tidyverse)
+ggplot(abuse.data, aes(x = cpa, y = ptsd, color = csa)) +
+  geom_point() +
+  stat_smooth(method = "lm", se = FALSE) +
+  labs (title = "PTSD as a Function of CPA by CSA") +
+  scale_color_manual(values = c("Red", "Blue"))
+```
 
 
 ***
-### Question 9
-#### Assigned to Joy
+### Question 9 
+
+The constructed ANCOVA table after modeling the women's PTSD Scores (the 
+response variable) as a function for the women who suffered childhood 
+ sexual abuse to those who did not suffer childhood sexual abuse (the 
+ explanatory variable) and the amount of childhood physical abuse (the covariate
+ - without interaction).
+
+```{r}
+model <- abuse.data$ptsd ~ abuse.data$cpa + abuse.data$csa
+model.out <- lm(model)
+plot(model.out, 1)
+plot(model.out, 2)
+anova(model.out)
+model.out
+```
 
