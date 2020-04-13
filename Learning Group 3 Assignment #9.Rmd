@@ -112,7 +112,19 @@ ggplot(abuse.data, aes(x = cpa, y = ptsd, color = csa))+
 
 ***
 ### Question 7
-#### Assigned to Anna
+
+A Q-Q plot of the residuals calculated to confirm the condition of normal 
+distribution.
+
+```{r}
+ggplot(data = abuse.data, x = csa, y = ptsd) +
+  geom_qq(aes(sample = cpa)) +
+  stat_qq(aes(sample = cpa)) +
+  stat_qq_line(aes(sample = cpa)) +
+  labs(x = "Theoretical", y = "Sample",
+       title = "Q-Q Plot of Residuals when modeling for Women PTSD Scores",
+       subtitle = "as a function of their reported Childhood Sexual Physical Abuse")
+```
 
 
 ***
@@ -158,4 +170,3 @@ plot(model.out, 2)
 anova(model.out)
 model.out
 ```
-
