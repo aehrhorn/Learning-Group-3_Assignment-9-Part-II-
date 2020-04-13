@@ -32,7 +32,14 @@ abuse.data$csa <- factor(abuse.data$csa,
 
 ***
 ### Question 2
-#### Assigned to Genee'
+
+*Calculated descriptive statistics for the response variable at each level of the categorical variable*
+```{r}
+tapply(abuse.data$ptsd, abuse.data$csa, summary)
+```
+```{r}
+tapply(abuse.data$ptsd, abuse.data$csa, sd)
+```
 
 
 ***
@@ -53,6 +60,27 @@ abuse.data$csa <- factor(abuse.data$csa,
 ***
 ### Question 6
 #### Assigned to Genee'
+
+*Calculate the predicted values and residuals when modeling the response variable as afunction of the explanatory variable and covariate (without interaction)*
+```{r}
+model1=lm(data=abuse.data, formula= cpa ~ ptsd)
+summary(model1)
+abuse.data$predicted <- predict(model1)   # Save the predicted values
+abuse.data$residuals <- residuals(model1) # Save the residual values
+abuse.data %>% select(cpa, predicted, residuals) %>% head()
+```
+
+*Plotted the residuals as a function of the predicted values to confirm homogeneity of variance*
+```{r}
+ggplot(data=abuse.data, aes(x=predicted, y=residuals, color = csa))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  labs(x = "Childhood Sexual Abuse", 
+       y = "PTSD Score", 
+       title = "Residuals from Childhood physcial abuse ~ PTSD model") 
+```
+
+
 
 
 ***
