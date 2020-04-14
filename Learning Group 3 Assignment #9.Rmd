@@ -1,8 +1,10 @@
 ---
-title: "Assignment #9: Part II"
-author: "Learning Group 3:Meka McCammon, Joy Li, Anna Ehrhorn, and Genee’ Glascoe"
-date: "April 11, 2020"
-output: html_notebook
+title: "Assignment 9 Part II"
+author: "Learning Group 3 - Meka McCammon, Joy Li, Anna Ehrhorn, and Genee Glascoe"
+date: "April 14, 2020"
+output:
+  html_document:
+    df_print: paged
 ---
 
 ***
